@@ -23,6 +23,31 @@ def search_for_string(string, lines):
             print('{}: {}'.format(number, line))
 
 
+def item_price(item_type):
+    ''' str -> float
+
+    Returns the price of the selected item
+
+    >>> item_price('Game')
+    5.00
+    >>> item_price('Movies')
+    5.25
+    >>> item_price('Anime')
+    4.00
+    '''
+    if item_type == 'Game':
+        return 5.00
+    if item_type == 'Movies':
+        return 5.25
+
+
+def price_history(payment, rent_rate, item_name):
+    time = datetime.now()
+    text = '\n{}, {}, {},'.format(payment, rent_rate, item_name)
+    with open('history.txt', 'a') as file:
+        file.write(text)
+
+
 def main():
     choice = category_choice()
     string = input('Title:')
