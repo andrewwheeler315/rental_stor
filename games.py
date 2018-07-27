@@ -1,0 +1,48 @@
+def load_games()
+    Games = {
+        'Final Fantasy XV': {'Director: Hajime Tabata'
+                            'Genre: RPG'
+                            'Price: $1.25'},
+        'Final Fantasy XIII': {'Director: Motomu Toriyama'
+                            'Genre: ATB RPG'
+                            'Price: $1.00'},
+        'Final Fantasy X': {'Director: Yoshinori Kitase'
+                            'Genre: Turn Based RPG'
+                            'Price: $0.75},
+        'Final Fantasy X-2': {'Director: Motomu Toriyama'
+                            'Genre: Turn Based RPG'
+                            'Price: $0.75'},
+        'Final Fantasy VII': {'Director: Yoshinori Kitase'
+                            'Genre: ATB Turn Based RPG'
+                            'Price: $0.50},
+        "Uncharted 3: Drake's Deception": {'Director: Amy Henning'
+                            'Genre: TPS, Adventure'
+                            'Price: $2.00},
+        "Uncharted 4: A Thief's End" {'Director: Amy Henning'
+                            'Genre: TPS, Adventure'
+                            'Price: $2.75},
+        'Gears of War 3': {'Director: Karen Traviss'
+                            'Genre: TPS, Military Science'
+                            'Price: $2.25},
+        'Gears of War Judgement': {'Director: Karen Traviss'
+                            'Genre: TPS, Military Science'
+                            'Price: $2.00},
+        'God of War 3': {'Director: Stig Asmussen'
+                            'Genre: Mythology, Action'
+                            'Price: $2.50},
+        'God of War 4': {'Director: Cory Barlog'
+                            'Genre: Mythology, Action'
+                            'Price: $3.00},
+        'Doom 4': {'Director: Marty Stratton'
+                            'Genre: Fast Paced, FPS, Sci-Fi'
+                            'Price: $1.25}
+        'GTA V': {'Director: Rockstar'
+                            'Genre: Action'
+                            'Price: $3.25}
+        'Saints Row IV': {'Director: Steve Jaros'
+                            'Genre: Action'
+                            'Price: $3.50'}
+        'Saints Row III': {'Director: Scott Phillips'
+                            'Genre: Action'
+                            'Price: $1.00}    
+    }
