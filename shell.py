@@ -1,9 +1,11 @@
 from disk import *
 
 
-def category_choice():
+def get_category():
     """ () -> str
-    These are the entertainment choices you have to choose from."""
+    
+    Asks the user which type of item they would like to rent.
+    """
     category = ['games', 'movies', 'anime']
     while True:
         choice = input('Games, Movies, or Anime? ')
@@ -14,9 +16,18 @@ def category_choice():
             print('That is an invalid operation please try again. ')
 
 
+def show_choice():
+    """ () -> dic
+
+    Shows the user the dictionary of the items in their chosen category.
+    """
+
+
 def search_for_string(string, lines):
-    ''' This searches the text files and tries to find the item or 
-    related items and returns them. '''
+    ''' 
+    This searches the text files and tries to find the item or 
+    related items and returns them. 
+    '''
     number = 0
     for line in lines:
         number += 1
@@ -32,7 +43,7 @@ def price_history(payment, rent_rate, item_name):
 
 
 def main():
-    choice = category_choice()
+    choice = get_category()
     string = input('Title:')
     lines = open_file(choice)
     search_for_string(string, lines)
