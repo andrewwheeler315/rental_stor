@@ -1,48 +1,45 @@
+class Anime:
+    """An anime you can rent. """
+
+    def __init__(self, title, price):
+        """ (Anime, str, float) -> NoneType
+
+        Create a new anime named title and is worth price.
+        """
+
+        self.title = title
+        self.price = price
+
+    def __str__(self):
+        """ (Anime) -> str
+
+        Return a string representation of Anime. 
+        
+        >>> anime = Anime('Fairy Tail', '$0.25')
+        >>> anime.__str__()
+        'Fairy Tail\n$0.25'
+        """
+
+        return '{}\n{}'.format(self.title, self.price)
+
+
+
 def load_anime():
+
      Anime = {
-        'Fairy Tail': {'Director: Hiro Mashima'
-                            'Genre: Fantasy, Action'
-                            'Price: $0.25'},
-        'Seven Deadly Sins': {'Director: Nakaba Suzuki'
-                            'Genre:  Fantasy, Action'
-                            'Price: $0.50'},
-        'Bleach': {'Director: Tite Kubo'
-                            'Genre: Modern, Action'
-                            'Price: $0.75},
-        'One Piece': {'Director: Eiichiro Oda'
-                            'Genre: Pirate Action'
-                            'Price: $1.00},
-        'Full Metal Alchemist': {'Director: Hiromu Arakawa'
-                            'Genre:  Action'
-                            'Price: $1.25},
-        'Naruto': {'Director: Masashi Kishimoto'
-                            'Genre: Ninja, Action'
-                            'Price: $1.50},
-        'Inuyasha' {'Director:  Rumiko Takahashi'
-                            'Genre: Action'
-                            'Price: $1.75},
-        'Black Clover': {'Director: Yuki Tabata'
-                            'Genre: Magical Action'
-                            'Price: $1.50},
-        'Black Cat': {'Director: Kentaro Yabuki'
-                            'Genre: Bounty Hunter Action'
-                            'Price: $1.25},
-        'Cowboy Bebop': {'Director: Yoko Kanno'
-                            'Genre: Martial Arts, Action'
-                            'Price: $1.00},
-        'Hellsing': {'Director: Kouta Hirano'
-                            'Genre: Fantasy, Action'
-                            'Price: $0.75},
-        'Dragon Ball Z': {'Director: Akia Toriyama'
-                            'Genre: Martial Arts, Action'
-                            'Price: $0.50}
-        'Beyblade': {'Director: Takao Aoki'
-                            'Genre: Action'
-                            'Price: $0.25'}
-        'Yu-Gi-Oh!': {'Director: Kazuki Takahashi'
-                            'Genre: Card Action'
-                            'Price: $1.00'}
-        'My Hero Academia': {'Director: Kohei Horikoshi'
-                            'Genre: Super Hero, Action, Comedy, Motivational'
-                            'Price: $1.50'}    
-    }   
+        'Fairy Tail': {'Price: $0.25'},
+        'Seven Deadly Sins': {'Price: $0.50'},
+        'Bleach': {'Price: $0.75'},
+        'One Piece': {'Price: $1.00'},
+        'Full Metal Alchemist': {'Price: $1.25'},
+        'Naruto': {'Price: $1.50'},
+        'Inuyasha' {'Price: $1.75'},
+        'Black Clover': {'Price: $1.50'},
+        'One Punch Man': {'Price: $1.25'},
+        'Cowboy Bebop': {'Price: $1.00'},
+        'Hellsing': {'Price: $0.75'},
+        'Dragon Ball Z': {'Price: $0.50'},
+        'Beyblade': {'Price: $0.25'},
+        'Yu-Gi-Oh!': {'Price: $1.00'},
+        'My Hero Academia': {'Price: $1.50'}
+    }
