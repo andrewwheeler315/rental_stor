@@ -23,16 +23,16 @@ class Games:
         return '{}\n{}'.format(self.title, self.price)
 
 
-def load_games()
+def load_games():
 
     Games = {
         'Final Fantasy XV': {'Price: $1.25'},
         'Final Fantasy XIII': {'Price: $1.00'},
-        'Final Fantasy X': {'Price: $0.75},
+        'Final Fantasy X': {'Price: $0.75'},
         'Final Fantasy X-2': {'Price: $0.75'},
         'Final Fantasy VII': {'Price: $0.50'},
         "Uncharted 3: Drake's Deception": {'Price: $2.00'},
-        "Uncharted 4: A Thief's End" {'Price: $2.75'},
+        "Uncharted 4: A Thief's End": {'Price: $2.75'},
         'Gears of War 3': {'Price: $2.25'},
         'Gears of War Judgement': {'Price: $2.00'},
         'God of War 3': {'Price: $2.50'},
@@ -42,4 +42,3 @@ def load_games()
         'Saints Row IV': {'Price: $3.50'},
         'Saints Row III': {'Price: $1.00'}
     }
-

@@ -128,7 +128,7 @@ Anime = {
         'Hellsing': {'Director: Kouta Hirano'
                             'Genre: Fantasy, Action'
                             'Price: $0.75},
-        'Dragon Ball Z': {'Director: Akia Toriyama'
+        'Dragon Ball Z': {'Director: Akria Toriyama'
                             'Genre: Martial Arts, Action'
                             'Price: $0.50}
         'Beyblade': {'Director: Takao Aoki'

@@ -23,17 +23,16 @@ class Anime:
         return '{}\n{}'.format(self.title, self.price)
 
 
-
 def load_anime():
 
-     Anime = {
+    Anime = {
         'Fairy Tail': {'Price: $0.25'},
         'Seven Deadly Sins': {'Price: $0.50'},
         'Bleach': {'Price: $0.75'},
         'One Piece': {'Price: $1.00'},
         'Full Metal Alchemist': {'Price: $1.25'},
         'Naruto': {'Price: $1.50'},
-        'Inuyasha' {'Price: $1.75'},
+        'Inuyasha': {'Price: $1.75'},
         'Black Clover': {'Price: $1.50'},
         'One Punch Man': {'Price: $1.25'},
         'Cowboy Bebop': {'Price: $1.00'},
