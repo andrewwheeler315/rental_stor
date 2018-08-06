@@ -1,22 +1,4 @@
-#from disk import *
-from games import *
-from anime import *
-from movies import *
-
-
-def get_category():
-    """ () -> str
-    
-    Asks the user which type of item they would like to rent.
-    """
-    category = ['games', 'movies', 'anime']
-    while True:
-        choice = input('Games, Movies, or Anime? ')
-        if choice.lower() in category:
-            category_choice = ('{}.txt'.format(choice.lower()))
-            return category_choice
-        else:
-            print('That is an invalid operation please try again. ')
+from inventory import *
 
 
 def item_in_category_quantity(item_type):
@@ -24,92 +6,72 @@ def item_in_category_quantity(item_type):
 
     Returns the quantity of the provided item.
 
-    >>> item_quantity('Games')
-    Games.keys()
+    >>> item_quantity('Game')
+    Game.keys()
     >>> item_quantity('Anime')
     Anime.keys()
-    >>> item_quantity('Movies')
-    Movies.keys()
+    >>> item_quantity('Movie')
+    Movie.keys()
     '''
     if item_type == 'Anime':
-        return self.Anime
-    elif item_type == 'Games':
-        return self.Games
-    elif item_type == 'Movies':
-        return self.Movies
+        return Anime.keys()
+    elif item_type == 'Game':
+        return Game.keys()
+    elif item_type == 'Movie':
+        return Movie.keys()
     else:
         print("Invalid operation. Please try again. ")
 
 
-def input_items_took():
-    while True:
-        items_took = input('Anime:', 'Games:', 'Movies:')
-        if items_took in item_type:
-            return items_took
-        else:
-            print("Invalid operation. Please try again. ")
-
-
 def input_category():
     while True:
-        category = input('Anime, Games, or Movies:').strip().lower()
+        category = input('Anime, Game, or Movie? ').strip().lower()
         if category == 'Anime':
-            return self.anime
-        elif category == 'Games':
-            return self.games
-        elif category == 'Movies':
-            return self.movies
+            return Anime.keys()
+        elif category == 'Game':
+            return Game.keys()
+        elif category == 'Movie':
+            return Movie.keys()
         else:
             print('Invalid operation. Please try again. ')
 
 
-def input_item():
+def item():
     while True:
         item = input('Which item will you take? ')
         if item in Anime:
-            return anime.price
-        elif item in Games:
-            return games.price
-        elif item in Movies:
-            return movies.price
+            return Anime.keys()
+        elif item in Game:
+            return Game.keys()
+        elif item in Movie:
+            return Movie.keys()
         else:
             print("Please provide an item that is in the inventory. ")
 
 
-def show_choice():
-    """ () -> dic
+def titles_in_category():
+    """ str -> str
 
-    Shows the user the dictionary of the items in their chosen category.
+    Asks which title in the category the customers would like to rent.
     """
-
-
-def search_for_string(string, lines):
-    ''' 
-    This searches the text files and tries to find the item or 
-    related items and returns them. 
-    '''
-    number = 0
-    for line in lines:
-        number += 1
-        if string.lower() in line.lower():
-            print('{}: {}'.format(number, line))
-
-
-#def price_history(payment, rent_rate, item_name):
-#    time = datetime.now()
-#    text = '\n{}, {}, {},'.format(payment, rent_rate, item_name)
-#    with open('history.txt', 'a') as file:
-#        file.write(text)
+    Anime_Title = Anime.keys()
+    Games_Title = Game.keys()
+    Movie_Title = Movie.keys()
 
 
 def main():
-    choice = get_category()
-    string = input('Title:')
-    if input_item == 'Games':
-        return
 
-    #lines = open_file(choice)
-    #search_for_string(string, lines)
+    # item_type = input('Would you like a Movie, Game, or Anime? ')
+    # return (item_type)
+
+    print("Welcome to BorderLands214's Entertainment Rental ")
+
+    print('Which type of item are you looking for exactly? ')
+
+    # item_in_category_quantity(item_type)
+    input_category()
+    input_item()
+    titles_in_category()
 
 
 if __name__ == '__main__':
