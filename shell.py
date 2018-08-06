@@ -36,7 +36,7 @@ def input_category():
             print('Invalid operation. Please try again. ')
 
 
-def item():
+def input_item():
     while True:
         item = input('Which item will you take? ')
         if item in Anime:
@@ -64,7 +64,7 @@ def main():
     # item_type = input('Would you like a Movie, Game, or Anime? ')
     # return (item_type)
 
-    print("Welcome to BorderLands214's Entertainment Rental ")
+    print("Welcome to BorderLands214's Entertainment Rental")
 
     print('Which type of item are you looking for exactly? ')
 
