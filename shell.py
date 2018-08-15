@@ -1,9 +1,9 @@
-import sys
 from time import sleep
 from datetime import datetime
-from termcolor import cprint
+from termcolor import colored, cprint
 from disk import *
 
+# make a dictionary for every item
 # rental_code is needed
 # days_rented is needed
 # condition_rented is needed
@@ -11,10 +11,8 @@ from disk import *
 # inital_price (basecharge) is needed
 # price_after_days is needed
 
-def days():
-    max_days = 7
-    min_days = 1 
-
+# if the customer rents an item for one day it's just the initial 
+# price for each day past that then it adds a dollar to the total
 
 def user_choice():
 
@@ -22,7 +20,7 @@ def user_choice():
     return choice
     if choice == 'CUSTOMER':
         return choice
-    if choice == "EMPLOYEE":
+    elif choice == "EMPLOYEE":
         return choice
     else:
         cprint('Would you please try again?', 'red', 'on_white')
@@ -32,13 +30,17 @@ def user_choice():
 def customer_choice():
     choice = input("Would like to rent or return an item? ")
     if choice == 'rent':
-        days = input("How long do you you plan on renting this item? ")
         return days
-    if choice == 'return':
+    elif choice == 'return':
         print("Did you enjoy it? ")
     else:
         print("Error ")
 
+def days():
+    days = input("How long do you you plan on renting this item? ")
+    max_days = 7
+    min_days = 1 
+    days = customer_choice
 
 def items_in_inventory():
     items = open('inventory.txt', 'r')
@@ -60,13 +62,16 @@ def rental():
 
     if rental_code == 'I':
         print('The initial price for that item is: ')
-    if rental_code == 'D':
+    elif rental_code == 'D':
         print('How many days are you renting this for? ')
-    if rental_code == 'W':
+    elif rental_code == 'W':
         print('How many weeks are you renting this for? ')
 
 
 def main():
+    #transactions = [replacement]
+    #return replacement
+    #{"Name": "Item Name", "Director", "Genre", "Initial Price", "Replacement"}
     choice = user_choice()
     if choice == 'CUSTOMER':
         choice = customer_choice()
@@ -84,16 +89,3 @@ def main():
 if __name__ == '__main__':
     main()
 
-# Games
-# Final Fantasy XV,Hajime Tabata,RPG,1.25,new,1.26
-# Final Fantasy VII,Yoshinori Kitase,ATB Turn Based RPG,0.50,pre-owned,0.51
-# Uncharted 3 Drakes Deception,Amy Henning,Adventure,2.00,pre-owned2.01
-# Uncharted 4 A Thiefs End,Amy Henning,Adventure,3.75,new,3.76
-# Saints Row IV,Steve Jaros,Action,3.50,pre-owned,3.51
-
-# Anime
-# Fairy Tail,Hiro Mashima,Action,0.25,new,0.26
-# Seven Deadly Sins,Nakaba Suzuki,Fantasy,0.50,pre-owned,0.51
-# Full Metal Alchemist,Hiromu Arakawa,Action,1.25,new,1.26
-# Dragon Ball Z,Akria Toriyama,Martial Arts,0.50,new,0.51
-# My Hero Academia,Kohei Horikoshi,Super Hero,1.50,new,1.51

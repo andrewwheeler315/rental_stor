@@ -1,7 +1,16 @@
-name,director,genre,inital_price,condition,replacement
-
-Transformers,Micheal Bay, Sci-Fi,1.00,new,1.01            
-Deadpool,Tim Miller,Comedy,1.25,new,1.26
-X-Men Origins Wolverine,Gavin Hood,Action,1.50,pre-owned,1.51
-Die Hard,John McTiernan,Action,1.75,pre-owned,1.76
-Thor,Kenneth Branagh,Action,2.75,new,2.76
+type,stock,item_name,director,genre,initial_price,replacement
+Movie,15,Transformers,Micheal Bay, Sci-Fi,1.00,1.01            
+Movie,15,Deadpool,Tim Miller,Comedy,1.25,1.26
+Movie,15,X-Men Origins Wolverine,Gavin Hood,Action,1.50,1.51
+Movie,15,Die Hard,John McTiernan,Action,1.75,1.76
+Movie,15,Thor,Kenneth Branagh,Action,2.75,2.76
+Game,15,Final Fantasy XV,Hajime Tabata,RPG,1.25,1.26
+Game,15,Final Fantasy VII,Yoshinori Kitase,ATB Turn Based RPG,0.50,0.51
+Game,15,Uncharted 3 Drakes Deception,Amy Henning,Adventure,2.00,2.01
+Game,15,Uncharted 4 A Thiefs End,Amy Henning,Adventure,3.75,3.76
+Game,15,Saints Row IV,Steve Jaros,Action,3.50,3.51
+Anime,15,Fairy Tail,Hiro Mashima,Action,0.25,0.26
+Anime,15,Seven Deadly Sins,Nakaba Suzuki,Fantasy,0.50,0.51
+Anime,15,Full Metal Alchemist,Hiromu Arakawa,Action,1.25,1.26
+Anime,15,Dragon Ball Z,Akria Toriyama,Martial Arts Action,0.50,0.51
+Anime,15,My Hero Academia,Kohei Horikoshi,Super Hero Action,1.50,1.51
