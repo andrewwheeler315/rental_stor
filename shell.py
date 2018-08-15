@@ -1,78 +1,99 @@
-from inventory import *
+import sys
+from time import sleep
+from datetime import datetime
+from termcolor import cprint
+from disk import *
+
+# rental_code is needed
+# days_rented is needed
+# condition_rented is needed
+# condition_returned is needed
+# inital_price (basecharge) is needed
+# price_after_days is needed
+
+def days():
+    max_days = 7
+    min_days = 1 
 
 
-def item_in_category_quantity(item_type):
-    ''' str -> dic
+def user_choice():
 
-    Returns the quantity of the provided item.
-
-    >>> item_quantity('Game')
-    Game.keys()
-    >>> item_quantity('Anime')
-    Anime.keys()
-    >>> item_quantity('Movie')
-    Movie.keys()
-    '''
-    if item_type == 'Anime':
-        return Anime.keys()
-    elif item_type == 'Game':
-        return Game.keys()
-    elif item_type == 'Movie':
-        return Movie.keys()
+    choice = input("Are you a Customer or an Employee? ").upper()
+    return choice
+    if choice == 'CUSTOMER':
+        return choice
+    if choice == "EMPLOYEE":
+        return choice
     else:
-        print("Invalid operation. Please try again. ")
+        cprint('Would you please try again?', 'red', 'on_white')
+        user_choice
 
 
-def input_category():
-    while True:
-        category = input('Anime, Game, or Movie? ').strip().lower()
-        if category == 'Anime':
-            return Anime.keys()
-        elif category == 'Game':
-            return Game.keys()
-        elif category == 'Movie':
-            return Movie.keys()
-        else:
-            print('Invalid operation. Please try again. ')
+def customer_choice():
+    choice = input("Would like to rent or return an item? ")
+    if choice == 'rent':
+        days = input("How long do you you plan on renting this item? ")
+        return days
+    if choice == 'return':
+        print("Did you enjoy it? ")
+    else:
+        print("Error ")
 
 
-def input_item():
-    while True:
-        item = input('Which item will you take? ')
-        if item in Anime:
-            return Anime.keys()
-        elif item in Game:
-            return Game.keys()
-        elif item in Movie:
-            return Movie.keys()
-        else:
-            print("Please provide an item that is in the inventory. ")
+def items_in_inventory():
+    items = open('inventory.txt', 'r')
+    items = items.read()
+    print(items)
+
+def return_item():
+    
 
 
-def titles_in_category():
-    """ str -> str
+def choose_item():
+    items_in_inventory()
+    choice = input('What item are you seeking? ')
 
-    Asks which title in the category the customers would like to rent.
-    """
-    Anime_Title = Anime.keys()
-    Games_Title = Game.keys()
-    Movie_Title = Movie.keys()
+
+def rental():
+    rental_code = input("(I)nitial Price, (D)aily, or (W)eekly?\n").upper()
+    rental_period = input("Number of weeks rented:\n")
+
+    if rental_code == 'I':
+        print('The initial price for that item is: ')
+    if rental_code == 'D':
+        print('How many days are you renting this for? ')
+    if rental_code == 'W':
+        print('How many weeks are you renting this for? ')
 
 
 def main():
+    choice = user_choice()
+    if choice == 'CUSTOMER':
+        choice = customer_choice()
+        if choice == 'rent':
+            # days
+            # rent item
+        elif choice == 'return':
+            # return item
+    elif choice == 'EMPLOYEE':
+        print(history())
 
-    # item_type = input('Would you like a Movie, Game, or Anime? ')
-    # return (item_type)
-
-    print("Welcome to BorderLands214's Entertainment Rental")
-
-    print('Which type of item are you looking for exactly? ')
-
-    # item_in_category_quantity(item_type)
-    input_category()
-    input_item()
-    titles_in_category()
+    print(items_in_inventory())
 
 
 if __name__ == '__main__':
     main()
+
+# Games
+# Final Fantasy XV,Hajime Tabata,RPG,1.25,new,1.26
+# Final Fantasy VII,Yoshinori Kitase,ATB Turn Based RPG,0.50,pre-owned,0.51
+# Uncharted 3 Drakes Deception,Amy Henning,Adventure,2.00,pre-owned2.01
+# Uncharted 4 A Thiefs End,Amy Henning,Adventure,3.75,new,3.76
+# Saints Row IV,Steve Jaros,Action,3.50,pre-owned,3.51
+
+# Anime
+# Fairy Tail,Hiro Mashima,Action,0.25,new,0.26
+# Seven Deadly Sins,Nakaba Suzuki,Fantasy,0.50,pre-owned,0.51
+# Full Metal Alchemist,Hiromu Arakawa,Action,1.25,new,1.26
+# Dragon Ball Z,Akria Toriyama,Martial Arts,0.50,new,0.51
+# My Hero Academia,Kohei Horikoshi,Super Hero,1.50,new,1.51
