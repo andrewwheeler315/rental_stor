@@ -1,36 +1,13 @@
-from inventory import *
 from time import sleep
 from datetime import datetime
 from termcolor import colored, cprint
-from disk import *
-
-# make a dictionary for every item
-# rental_code is needed
-# days_rented is needed
-# condition_rented is needed
-# condition_returned is needed
-# inital_price (basecharge) is needed
-# price_after_days is needed
-
-# if the customer rents an item for one day it's just the initial
-# price for each day past that then it adds a dollar to the total
-
-# def login():
-# while True:
-# user = input("[C]ustomer\n[E]mployee\n[L]eave\n<<<")
-# if user.upper() == "C":
-# return user.upper()
-# if user.upper() == "E":
-# return user.upper()
-# if user.upper() == "L":
-# return user.upper()
-# else:
-# print('Incorrect try again ')
+import disk
+import core
 
 
 def user_choice():
 
-    choice = input("Are you a Customer or an Employee? ").upper()
+    choice = input("Are you a Customer or an Employee? ")
     return choice
     if choice == 'CUSTOMER':
         return choice
@@ -41,80 +18,107 @@ def user_choice():
         user_choice
 
 
-def customer_choice():
+def customer_choice(inventory):
+    choice = input('1--Return\n2--Rent\n3--Leave')
+    if choice == '1':
+        customer_return(inventory)
+        exit()
+    elif choice == '2':
+        item = customer_rental(inventory)
+        return item
+    elif choice == '3':
+        print('I hope you have nice day. ')
+        exit()
+
+
+def customer_return(inventory):
     while True:
-        choice = input
-    choice = input("Would like to rent or return an item? ")
-    if choice == 'RENT'.lower():
-        return load_inventory()
-    elif choice == 'RETURN'.lower():
-        return return_item()
-    else:
-        print("Error ")
-        customer_choice
-
-
-def days():
-    days = input("How long do you you plan on renting this item? ")
-    max_days = 7
-    min_days = 1
-    days = customer_choice
-
-
-def items_in_inventory():
-    items = open('inventory.py', 'r')
-    items = items.read()
-    print(items)
-
-
-def choose_item():
-    items_in_inventory()
-    choice = input('What item are you seeking? ')
-
-
-def item_value():
-    item_value = initial_price * 2.00
-
-
-def input_rent_item(item_type):
-    while True:
-        rent_item = input('Movies:', 'Games:', 'Anime:')
-        if rent_item in item_type:
-            return rent_item
+        options = core.make_inven_options(inventory)
+        choice = input(
+            f'What items are you going to return today\n{options}\n???')
+        if choice in options:
+            item = inventory[choice]
+            if core.can_return(item) == True:
+                item['Stock'] += 1
+                fee = core.deposit_fee(item)
+                print(
+                    f'Thank You for returning. Here is your deposit of $ {fee}'
+                )
+                disk.write_to_file_inven(inventory)
+                exit()
+            else:
+                print("Hey this item isn't returnable. ")
+                exit()
         else:
-            print("Error please try again but with something vaild. ")
+            print('You obviously can\'t do that. ')
 
 
-def rental_sale():
-    cost = rental_price * number_of_days
-    tax = cost * 0.07
-    deposit = item_value * 0.10
-    rental_sale = cost + tax + deposit
-    return rental_sale
+def customer_rental(inventory):
+    options = core.make_inven_options(inventory)
+    print(f'These are the items that are available\n{options}')
+    while True:
+        choice = input("Now what would you like to rent. ")
+        if choice in options:
+            item = inventory[choice]
+            if core.is_in_stock(item) == True:
+                item['Stock'] -= 1
+                return item
+        else:
+            print('This item isn\'t able to be rented. ')
 
 
-def return_item():
-    choice = input('Are you returning a movie, game, or an anime? ')
-    if choice in inventory:
-        print(choice)
+def employee_choice(inventory):
+    print(
+        'Employee options :\n1--Check Stock\n2--Review Transaction History\n3--View Revenue\n4--Clockout'
+    )
+    while True:
+        choice = input('Option you\'d like to choose. ')
+        if choice == "1":
+            inven = disk.open_file('inventory.txt')
+            inven = core.employee_inven(inven)
+            print(inven)
+        elif choice == "2":
+            receipt = disk.open_file_history()
+            print(receipt)
+        elif choice == "3":
+            print(disk.revenue())
+        elif choice == "4":
+            print('Have a nice day. ')
+            exit()
+        else:
+            print('Nein that won\'t work ')
+
+
+def choose_days():
+    while True:
+        days = input('How many days')
+        if days.isdigit():
+            return days
+        else:
+            print('I\'m sorry but that is a invalid amount of time. ')
 
 
 def main():
-    #transactions = [replacement]
-    #return replacement
-    #{"Name": "Item Name", "Director", "Genre", "Initial Price", "Replacement"}
-    choice = user_choice()
-    if choice == 'CUSTOMER':
-        choice = customer_choice()
-        if choice == 'rent':
-            # days
-            # rent item
-            if choice == 'return':
-                print(return_item())
-                if choice == 'EMPLOYEE':
-                    print(history())
-
-    print(items_in_inventory())
+    store = True
+    inventory = disk.open_file('inventory.txt')
+    while store != False:
+        choice = user_choice()
+        if choice.upper() == 'C':
+            item = customer_choice(inventory)
+            fee_1 = core.deposit_fee(item)
+            print(f'The deposit fee is ${fee_1}')
+            days = choose_days()
+            fee_2 = core.total_rental_fee(item, days)
+            print(f'The total rental fee is s{fee_2}')
+            print('Hope you have a good day.')
+            disk.write_to_file_inven(inventory)
+            time = datetime.now()
+            name = item['Name']
+            history = core.make_history(time, name, days, fee_1, fee_2)
+            disk.write_to_file_history(history)
+            store = False
+        elif choice.upper() == 'E':
+            employee_choice(inventory)
 
 
 if __name__ == '__main__':
